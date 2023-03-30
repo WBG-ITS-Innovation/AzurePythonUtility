@@ -25,7 +25,7 @@ def send_message(queue_name, message):
   queue_client = get_queue(queue_name)  
   queue_client.send_message(message)  
 
-def recieve_message(queue_name, message):
+def recieve_message(queue_name):
   queue_client = get_queue(queue_name)
   return queue_client.receive_message(visibility_timeout=6000)
 
