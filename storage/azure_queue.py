@@ -22,7 +22,7 @@ def get_queue(queue_name):
     return client
 
 def send_message(queue_name, message):
-  queue_client = get_queue(queue_name)
+  queue_client = get_queue(queue_name)  
   queue_client.send_message(message)  
 
 def recieve_message(queue_name, message):
@@ -37,8 +37,7 @@ if __name__ == "__main__":
   queue_client = get_queue('embedding')
   queue_client.send_message('test')
   msg = queue_client.receive_message(visibility_timeout=6000)
-  print(msg)
-  #queue_client.delete_message(msg)
+  print(msg)  
   time.sleep(2)
   msg2 = queue_client.receive_message(visibility_timeout=6000)
   print(msg2)
