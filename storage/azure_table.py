@@ -61,7 +61,7 @@ def get_user(user_name):
         print(err)
     return None
 
-def create_user(email, password):    
+def create_user(email, password):     
     user_entity = {
         'PartitionKey': USERS_PARTITION_KEY,
         'RowKey': email,
@@ -69,4 +69,4 @@ def create_user(email, password):
     }
 
     table_client = get_table_client(USERS_TABLE)
-    table_client.upsert_entity(mode=UpdateMode.REPLACE, entity=user_entity)    
+    table_client.upsert_entity(mode=UpdateMode.REPLACE, entity=user_entity)
