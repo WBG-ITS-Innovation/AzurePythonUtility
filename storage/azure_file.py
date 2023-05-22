@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 
 class AzureFile:
 
-  def normalize_email(s):
+  def normalize_email(self, s):
       s = s.replace(".","1")
       s = s.replace("@","2")            
       return s
@@ -20,7 +20,7 @@ class AzureFile:
     print(local_file_name)
     print(local_path)
     service_client = self.get_blob_service_client() 
-    container_client = service_client.get_container_client('climate')
+    container_client = service_client.get_container_client(container_name)
     if not container_client.exists():
       container_client.create_container()
     blob_client = container_client.get_blob_client(local_file_name)
