@@ -47,6 +47,11 @@ class AzureFile:
     service_client = self.get_blob_service_client() 
     container_client = service_client.get_container_client(container_name)
     return container_client.list_blobs(include='metadata')
+  
+  def blob_delete_file(self, container_name, blob_file_name):
+    service_client = self.get_blob_service_client()
+    blob_client = service_client.get_blob_client(container=container_name, blob=blob_file_name)
+    blob_client.delete_blob(delete_snapshots="include")
 
   def change_metadata(self, container_name, file_name, key, value):
     service_client = self.get_blob_service_client()
